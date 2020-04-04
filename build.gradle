@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.3.RELEASE'
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE' // same as Maven's <dependencyManagement> tags
     // version, scope, exclusions can be declared in parent POM
     id 'java'
