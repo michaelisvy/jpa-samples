@@ -1,4 +1,4 @@
-package samples.jpa.locking.optimistic;
+package samples.jpa.locking;
 
 import lombok.Data;
 
@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+// used for tests on Optimistic Locking (therefore contains version attribute)
 public class OLCustomer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

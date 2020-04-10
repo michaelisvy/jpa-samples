@@ -1,9 +1,11 @@
-package samples.jpa.locking.optimistic;
+package samples.jpa.locking;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.persistence.*;
 
@@ -11,10 +13,17 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
+@Slf4j
 public class OLCustomerTest {
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;
+
+    @Autowired
+    private EntityManager entityManager;
+
+    @Autowired
+    private PlatformTransactionManager transactionManager;
 
     @BeforeEach
     public void init() {
@@ -26,7 +35,7 @@ public class OLCustomerTest {
     }
 
     @Test
-    public void shouldCreate2Transactions() {
+    public void shouldCreate2TransactionsJPA_API() {
         EntityManager entityManager1 = this.entityManagerFactory.createEntityManager();
         EntityTransaction transaction1 = entityManager1.getTransaction();
         transaction1.begin();
